@@ -1,2 +1,0 @@
-# nguyenledangkhoa
-github của Khoa
