@@ -271,3 +271,15 @@ html {
 .card-list li:first-child {
   margin-left: 0;
 }
+@media srceen all (max-width:960px){
+.body-image {
+  border-radius: 100%;
+  box-shadow: 5px 10px 75px rgba(0, 0, 0, .4);
+  float: left;
+  margin: -90px 0 20px;
+  position: relative;
+  z-index: 2;
+  width:35%;
+  height:20%;
+}
+}
