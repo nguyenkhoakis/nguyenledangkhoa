@@ -2,92 +2,112 @@
   <html>
   <head>
     <title>KIS</title>
-   <link rel="stylesheet" href="css.css">
+   <link rel="stylesheet" href="cs.css">
   </head>
   <body>
-    <div class="head">
-<nav role="navigation" id="#nav">
-  <div id="menuToggle">
-    <input type="checkbox" />
-    <span></span>
-    <span></span>
-    <span></span>
-    <ul id="menu">
-      <a href="#"><li>Trang Chủ</li></a>
-      <a href="#fb"><li>Liên hệ</li></a>
-     </ul>
+<div class="chat">
+  <div class="chat-title">
+    <h1>Fabio Ottaviani</h1>
+    <h2>Supah</h2>
+    <figure class="avatar">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>
   </div>
-</nav>
-    </div>
-        <b class="b2"><marquee>Sự kiện tiếp theo: Tết Âm Lịch(11/2/2021)</marquee></b> 
-     <b class="b1"><i>Đêm Giao Thừa (10/2/2021)</i></b>
-           
-        <div class="count">
-          <div class="countd">
-            <span id="days">00</span><br>
-            <b>Ngày</b>
-          </div>
+  <div class="messages">
+    <div class="messages-content"></div>
+  </div>
+  <div class="message-box">
+    <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+    <button type="submit" class="message-submit">Send</button>
+  </div>
 
-          <div class="countd">
-            <span id="hours">00</span><br>
-            <b> Giờ</b>
-          </div>
+</div>
+<div class="bg"></div>
+    <script>
+    var $messages = $('.messages-content'),
+    d, h, m,
+    i = 0;
 
-          <div class="countd">
-            <span id="minutes">00</span><br>
-            <b>Phút</b>
-          </div>
+$(window).load(function() {
+  $messages.mCustomScrollbar();
+  setTimeout(function() {
+    fakeMessage();
+  }, 100);
+});
 
-          <div class="countd">
-            <span id="seconds">00</span><br>
-            <b>Giây</b>
-          </div>
-        </div>
-  </div><br>
-    <div class="container">
-      <p class="p1">Thông Tin</p><hr>
-      <a href="">
-        <div class="fb">
-        <p class="text">Facebook: nguyenledangkhoaa</p>
-        </div>
-      </a>
-       <a href="">
-         <div class="ins">
-        <p class="text">Instagram: @nguyenledanggkhoa</p>
-         </div>
-       </a>
-       <a href="">
-         <div class="gmail">
-           <img src="img/gmail.png">
-        <p class="text">gmail: kis.onstay@gmail.com</p>
-      </div>
-    </a>
-    </div>
-    <div class="end">
-      <p class="text1">©2020:Nguyễn Khoa</p>
-    </div>
-  
-<script type="text/javascript">
+function updateScrollbar() {
+  $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+    scrollInertia: 10,
+    timeout: 0
+  });
+}
 
-  var count = new Date("February 12,2021 00:00:00").getTime();
-  var x = setInterval(function() {
-    var now = new Date().getTime();
-    var d = count - now;
+function setDate(){
+  d = new Date()
+  if (m != d.getMinutes()) {
+    m = d.getMinutes();
+    $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
+  }
+}
 
-    var days = Math.floor(d/(1000*60*60*24));
-    var hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
-    var minutes = Math.floor((d%(1000*60*60))/(1000*60));
-    var seconds = Math.floor((d%(1000*60))/1000);
+function insertMessage() {
+  msg = $('.message-input').val();
+  if ($.trim(msg) == '') {
+    return false;
+  }
+  $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
+  setDate();
+  $('.message-input').val(null);
+  updateScrollbar();
+  setTimeout(function() {
+    fakeMessage();
+  }, 1000 + (Math.random() * 20) * 100);
+}
 
-    document.getElementById("days").innerHTML = days;
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
+$('.message-submit').click(function() {
+  insertMessage();
+});
 
-    if(d <= 0){
-      clearInterval(x);
-    }
-  },1000);
-</script>
-  </body>
-  </html>
+$(window).on('keydown', function(e) {
+  if (e.which == 13) {
+    insertMessage();
+    return false;
+  }
+})
+
+var Fake = [
+  'Hi there, I\'m Fabio and you?',
+  'Nice to meet you',
+  'How are you?',
+  'Not too bad, thanks',
+  'What do you do?',
+  'That\'s awesome',
+  'Codepen is a nice place to stay',
+  'I think you\'re a nice person',
+  'Why do you think that?',
+  'Can you explain?',
+  'Anyway I\'ve gotta go now',
+  'It was a pleasure chat with you',
+  'Time to make a new codepen',
+  'Bye',
+  ':)'
+]
+
+function fakeMessage() {
+  if ($('.message-input').val() != '') {
+    return false;
+  }
+  $('<div class="message loading new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+  updateScrollbar();
+
+  setTimeout(function() {
+    $('.message.loading').remove();
+    $('<div class="message new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+    setDate();
+    updateScrollbar();
+    i++;
+  }, 1000 + (Math.random() * 20) * 100);
+
+}
+    </script>
+</body>
+</html>
