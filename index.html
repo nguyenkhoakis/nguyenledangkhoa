@@ -1,0 +1,93 @@
+<DOCTYPE html>
+  <html>
+  <head>
+    <title>KIS</title>
+   <link rel="stylesheet" href="css.css">
+  </head>
+  <body>
+    <div class="head">
+<nav role="navigation" id="#nav">
+  <div id="menuToggle">
+    <input type="checkbox" />
+    <span></span>
+    <span></span>
+    <span></span>
+    <ul id="menu">
+      <a href="#"><li>Trang Chủ</li></a>
+      <a href="#fb"><li>Liên hệ</li></a>
+     </ul>
+  </div>
+</nav>
+    </div>
+        <b class="b2"><marquee>Sự kiện tiếp theo: Tết Âm Lịch(11/2/2021)</marquee></b> 
+     <b class="b1"><i>Đêm Giao Thừa (10/2/2021)</i></b>
+           
+        <div class="count">
+          <div class="countd">
+            <span id="days">00</span><br>
+            <b>Ngày</b>
+          </div>
+
+          <div class="countd">
+            <span id="hours">00</span><br>
+            <b> Giờ</b>
+          </div>
+
+          <div class="countd">
+            <span id="minutes">00</span><br>
+            <b>Phút</b>
+          </div>
+
+          <div class="countd">
+            <span id="seconds">00</span><br>
+            <b>Giây</b>
+          </div>
+        </div>
+  </div><br>
+    <div class="container">
+      <p class="p1">Thông Tin</p><hr>
+      <a href="">
+        <div class="fb">
+        <p class="text">Facebook: nguyenledangkhoaa</p>
+        </div>
+      </a>
+       <a href="">
+         <div class="ins">
+        <p class="text">Instagram: @nguyenledanggkhoa</p>
+         </div>
+       </a>
+       <a href="">
+         <div class="gmail">
+           <img src="img/gmail.png">
+        <p class="text">gmail: kis.onstay@gmail.com</p>
+      </div>
+    </a>
+    </div>
+    <div class="end">
+      <p class="text1">©2020:Nguyễn Khoa</p>
+    </div>
+  
+<script type="text/javascript">
+
+  var count = new Date("February 12,2021 00:00:00").getTime();
+  var x = setInterval(function() {
+    var now = new Date().getTime();
+    var d = count - now;
+
+    var days = Math.floor(d/(1000*60*60*24));
+    var hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
+    var minutes = Math.floor((d%(1000*60*60))/(1000*60));
+    var seconds = Math.floor((d%(1000*60))/1000);
+
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+    if(d <= 0){
+      clearInterval(x);
+    }
+  },1000);
+</script>
+  </body>
+  </html>
