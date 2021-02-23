@@ -1,4 +1,4 @@
-   alert(*Lưu ý:Đây là bot messenger. Tin nhắn của boss ngẩu nhiên có chút lỗi.);
+ 
     const msgerForm = get(".msger-inputarea");
     const msgerInput = get(".msger-input");
     const msgerChat = get(".msger-chat");
