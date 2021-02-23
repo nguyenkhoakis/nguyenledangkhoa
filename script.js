@@ -7,7 +7,8 @@
     "Xin chào bạn. ",
     "Chúc bạn có một ngày thật là vui vẻ",
     "Bạn đã ăn uống gì chưa ạ?",
-    "Tks",
+    "Bạn đang làm gì đấy?",
+    "Vâng",
     "Oke"];
     
     
