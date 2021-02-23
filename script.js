@@ -74,5 +74,5 @@
     }
     
    function random(min, max) {
-      return Math.floor(Math.random());
+      return Math.floor(Math.random() * (min+max));
     }
