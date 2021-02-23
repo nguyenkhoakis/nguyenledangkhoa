@@ -52,9 +52,9 @@
     }
     
      function botResponse() {
-     const r = random(0, BOT_MSGS.length + 1);
+     const r = random(0, BOT_MSGS + 1);
       const msgText = BOT_MSGS[r];
-      const delay = msgText.split(" ").length * 100;
+      /*const delay = msgText.split(" ").length * 100;*/
     
       setTimeout(() => {
         appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
@@ -73,6 +73,6 @@
       return `${h.slice(-2)}:${m.slice(-2)}`;
     }
     
-   function random(min, max) {
+   /*function random(min, max) {
       return Math.floor(Math.random() * (max - min) + min);
-    }
+    }*/
