@@ -51,9 +51,9 @@
     }
     
      function botResponse() {
-     const r = random(0, BOT_MSGS.length + 1000);
+     const r = random(1000, BOT_MSGS.length * 100);
       const msgText = BOT_MSGS[r];
-      const delay = msgText.split(" ").length * 20) * 100);
+      const delay = msgText.split(" ").length * 20;
     
       setTimeout(() => {
         appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
