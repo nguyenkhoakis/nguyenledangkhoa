@@ -1,113 +1,110 @@
-<DOCTYPE html>
-  <html>
-  <head>
-    <title>KIS</title>
-   <link rel="stylesheet" href="cs.css">
-  </head>
-  <body>
-<div class="chat">
-  <div class="chat-title">
-    <h1>Fabio Ottaviani</h1>
-    <h2>Supah</h2>
-    <figure class="avatar">
-      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>
-  </div>
-  <div class="messages">
-    <div class="messages-content"></div>
-  </div>
-  <div class="message-box">
-    <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
-    <button type="submit" class="message-submit">Send</button>
-  </div>
+<!DOCTYPE html>
 
-</div>
-<div class="bg"></div>
-    <script>
-    var $messages = $('.messages-content'),
-    d, h, m,
-    i = 0;
+<html lang='en' class=''>
 
-$(window).load(function() {
-  $messages.mCustomScrollbar();
-  setTimeout(function() {
-    fakeMessage();
-  }, 100);
-});
+<head>
 
-function updateScrollbar() {
-  $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-    scrollInertia: 10,
-    timeout: 0
-  });
-}
+    <meta charset='UTF-8'>
 
-function setDate(){
-  d = new Date()
-  if (m != d.getMinutes()) {
-    m = d.getMinutes();
-    $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
-  }
-}
+    <title>ChatBox | Filter Coding </title>
 
-function insertMessage() {
-  msg = $('.message-input').val();
-  if ($.trim(msg) == '') {
-    return false;
-  }
-  $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
-  setDate();
-  $('.message-input').val(null);
-  updateScrollbar();
-  setTimeout(function() {
-    fakeMessage();
-  }, 1000 + (Math.random() * 20) * 100);
-}
+    <meta name="robots" content="noindex">
 
-$('.message-submit').click(function() {
-  insertMessage();
-});
+    <meta charset="UTF-8">
 
-$(window).on('keydown', function(e) {
-  if (e.which == 13) {
-    insertMessage();
-    return false;
-  }
-})
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-var Fake = [
-  'Hi there, I\'m Fabio and you?',
-  'Nice to meet you',
-  'How are you?',
-  'Not too bad, thanks',
-  'What do you do?',
-  'That\'s awesome',
-  'Codepen is a nice place to stay',
-  'I think you\'re a nice person',
-  'Why do you think that?',
-  'Can you explain?',
-  'Anyway I\'ve gotta go now',
-  'It was a pleasure chat with you',
-  'Time to make a new codepen',
-  'Bye',
-  ':)'
-]
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-function fakeMessage() {
-  if ($('.message-input').val() != '') {
-    return false;
-  }
-  $('<div class="message loading new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
-  updateScrollbar();
+    <link rel="stylesheet" href="style.css"></link>
 
-  setTimeout(function() {
-    $('.message.loading').remove();
-    $('<div class="message new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
-    setDate();
-    updateScrollbar();
-    i++;
-  }, 1000 + (Math.random() * 20) * 100);
+</head>
 
-}
-    </script>
+<body>
+
+    <section class="msger">
+
+        <header class="msger-header">
+
+            <div class="msger-header-title">
+
+                <i class="fas fa-comment-alt"></i> ChatBox
+            </div>
+
+            <div class="msger-header-options">
+
+                <span><i class="fas fa-cog"></i></span>
+
+            </div>
+
+        </header>
+
+        <main class="msger-chat">
+
+            <div class="msg left-msg">
+
+                <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+
+                <div class="msg-bubble">
+
+                    <div class="msg-info">
+
+                        <div class="msg-info-name">Computer</div>
+
+                        <div class="msg-info-time">12:45</div>
+
+                    </div>
+
+                    <div class="msg-text">
+
+                        Hi, welcome to ChatBox! Go ahead and send me a message.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="msg right-msg">
+
+                <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"></div>
+
+                <div class="msg-bubble">
+
+                    <div class="msg-info">
+
+                        <div class="msg-info-name">Filter Coding</div>
+
+                        <div class="msg-info-time">12:46</div>
+
+                    </div>
+
+                    <div class="msg-text">
+
+                        Hello
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+
+        <form class="msger-inputarea">
+
+            <input type="text" class="msger-input" placeholder="Enter your message...">
+
+            <button type="submit" class="msger-send-btn">Send</button>
+
+        </form>
+
+    </section>
+
+    <script src="https://use.fontawesome.com/releases/v5.0.13/js/all.js"></script>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
