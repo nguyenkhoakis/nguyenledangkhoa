@@ -52,7 +52,7 @@
     }
     
      function botResponse() {
-     const r = random(0, BOT_MSGS + 1);
+     const r = BOT_MSGS + 1;
       const msgText = BOT_MSGS[r];
       /*const delay = msgText.split(" ").length * 100;*/
     
